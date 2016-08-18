@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <div class="navbar-brand">ChatApp</div>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="http://edgeguides.rubyonrails.org/action_cable_overview.html" target="_blank">THIS APP IS MADE WITH ACTION CABLE</a>
+            </li>
+            <% if user_signed_in? %>
+              <%= yield :right_nav %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Settings", edit_user_registration_path %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+              <li><%= link_to "LOGIN", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="fluid-container" style="margin-top:70px;">
+    <div class="row">
+      <div class="col-sm-2" style="position:fixed; top:70px; left:0px;">
+        <% if user_signed_in? %>
+          <h5>Chatrooms</h5>
+          <ul>
+            <% current_user.chatrooms.each do |chatroom| %>
+              <li><%= link_to chatroom.name, chatroom, data: { behavior: "chatroom-link", chatroom_id: chatroom.id } %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="col-sm-10 col-sm-offset-2">
+        <%= yield %>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
