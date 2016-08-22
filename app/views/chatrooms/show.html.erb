@@ -1,7 +1,11 @@
-<p>
-  <strong>Name:</strong>
-  <%= @chatroom.name %>
-</p>
+<div style="padding-bottom:15px;">
+  <h4 style="display:inline">
+    <strong><u><%= @chatroom.name %> chatroom</u></strong>
+  </h4>
+  <span style="float:right">
+    <%= link_to "Back to chatrooms", chatrooms_path %>
+  </span>
+</div>
 
 <div data-behavior="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @messages.each do |message| %>

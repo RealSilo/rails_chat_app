@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,9 +19,11 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
+    @chatroom.owner = current_user
 
     respond_to do |format|
       if @chatroom.save
+        @chatroom.users << current_user
         format.html { redirect_to @chatroom, notice: 'Chatroom was successfully created.' }
         format.json { render :show, status: :created, location: @chatroom }
       else
