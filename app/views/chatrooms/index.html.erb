@@ -12,8 +12,11 @@
         <% end %>
       </div>
       <div class="col-xs-9">
-        <%= link_to 'Join chatroom', chatroom_chatroom_users_path(chatroom), method: :post, class: "btn btn-sm btn-success" %>
-        <%= link_to 'Leave chatroom', chatroom_chatroom_users_path(chatroom), method: :delete, class: "btn btn-sm btn-default" %>
+        <% if current_user && chatroom.users.map(&:id).include?(current_user.id) %>
+          <%= link_to 'Leave chatroom', chatroom_chatroom_users_path(chatroom), method: :delete, class: "btn btn-sm btn-default" %>
+        <% else %>
+          <%= link_to 'Join chatroom', chatroom_chatroom_users_path(chatroom), method: :post, class: "btn btn-sm btn-success" %>
+        <% end %>
         <% if policy(chatroom).update? %>
           <%= link_to 'Edit', edit_chatroom_path(chatroom), class: "btn btn-sm btn-warning" %>
           <%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>

@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pundit:
+    default: "You can't perform this action!"
+    chatroom_policy:
+      new?: "You have to register first"
+      create?: "You have to register first"
+      show?: "You have to join the room first"
+      edit?: "You must be the owner to be able to update the chatroom"
+      update?: "You must be the owner to be able to update the chatroom"
+      destroy?: "You must be the owner to be able to update the chatroom"

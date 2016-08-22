@@ -1,4 +1,8 @@
 class ChatroomPolicy < ApplicationPolicy
+
+  def show?
+    user.present? && chatroom.users.map(&:id).include?(user.id)
+  end
  
   def create?
     user.present?

@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, except: :index
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,6 +7,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    authorize @chatroom
     @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
   end
 
