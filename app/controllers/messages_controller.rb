@@ -2,12 +2,13 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_chatroom
 
-  def create
-    message = @chatroom.messages.new(message_params)
-    message.user = current_user
-    message.save
-    MessageRelayJob.perform_later(message)
-  end
+  ##controller action is not necessary as message creation is invoked in chatrooms_channel.rb
+  # def create
+  #   message = @chatroom.messages.new(message_params)
+  #   message.user = current_user
+  #   message.save
+  #   MessageRelayJob.perform_later(message)
+  # end
 
   private
 
