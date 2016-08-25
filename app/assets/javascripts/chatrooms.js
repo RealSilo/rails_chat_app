@@ -1,7 +1,7 @@
-$(document).on("turbolinks:load", function () {
+// $(document).on("turbolinks:load", function () {
 
 
-});
+// });
 
 $(document).on("keypress", "#new_message", function (e) {
   if (e && e.keyCode === 13 && e.target.value.length > 0) {
