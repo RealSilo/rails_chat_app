@@ -7,8 +7,14 @@
   </span>
 </div>
 
+<% unread_messages = false %>
 <div data-behavior="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @messages.each do |message| %>
+    <% if !unread_messages && @chatroom_user.checked_at < message.created_at %>
+      <% unread_messages = true %>
+      <div class="strike"><span>Unread messages</span></div>
+    <% end %>
+
     <%= render message %>
   <% end %>
 </div>

@@ -8,7 +8,8 @@ class ChatroomsController < ApplicationController
 
   def show
     authorize @chatroom
-    @messages = @chatroom.messages.order(created_at: :desc).limit(100).reverse
+    @messages = @chatroom.messages.latest
+    @chatroom_user = current_user.chatroom_users.find_by(chatroom_id: @chatroom.id)
   end
 
   def new

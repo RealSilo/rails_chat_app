@@ -17,6 +17,18 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
+@import url('https://fonts.googleapi.com/css?family=Work+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+$grey-medium-light: #eaeaea;
+$dark-grey: #5E5E5E;
+$light-grey: #f7f7f7;
+
+body {
+  font-family: "adobe-caslon-pro-1", "Work Sans", "Lato", "Helvetica Neue", sans-serif;
+  font-size: 1.4em;
+}
+
 .turbolinks-progress-bar {
   height: 2px !important;
   background-color: #808080 !important;
@@ -32,4 +44,46 @@
 
 .btn-default {
   color: black !important;
+}
+
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  color: $dark-grey;
+}
+
+.strike > span {
+  position: relative;
+  display: inline-block;
+}
+
+.strike > span:before,
+.strike > span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  height: 1px;
+  background: $grey-medium-light;
+}
+
+.strike > span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.strike > span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.message-created {
+  color: $dark-grey;
+  font-size: 0.8em;
+}
+
+.message-body {
+  color: $dark-grey;
 }
