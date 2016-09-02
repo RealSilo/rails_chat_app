@@ -6,6 +6,7 @@ $(document).on("click", function (e) {
 });
 
 $(document).on("keypress", "#new_message", function (e) {
+  handleVisibilityChange();
   if (e && e.keyCode === 13 && e.target.value.length > 0) {
     e.preventDefault();
     $(this).submit();

@@ -30,7 +30,8 @@ App.chatrooms = App.cable.subscriptions.create("ChatroomsChannel", {
         App.checked_at.update(data.chatroom_id);
       }
 
-      active_chatroom.append("<div><strong>" + data.username + ":</strong> " + data.body + "</div>");
+      var momentCreatedAt = moment(data.created_at).format('hh:mm A');
+      active_chatroom.append("<div><strong>" + data.username + " </strong><span class='message-created'>" + momentCreatedAt + "</span><div>" + data.body + "</div>");
 
     } 
     else {
