@@ -3,9 +3,7 @@ class ChatroomUsersController < ApplicationController
   before_action :set_chatroom
 
   def create
-    @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create do |chatroom_user|
-      chatroom_user.checked_at = Time.zone.now
-    end
+    @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
     redirect_to @chatroom
   end
 

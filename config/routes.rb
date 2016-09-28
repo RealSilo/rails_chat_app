@@ -4,5 +4,8 @@ Rails.application.routes.draw do
     resource :chatroom_users
     resources :messages
   end
+
+  resources :private_chatrooms
+
   devise_for :users
 end
