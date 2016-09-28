@@ -4,7 +4,7 @@ class PrivateChatroomsController < ApplicationController
   def show
     users = [current_user, User.find(params[:id])]
     if users[0] == users[1]
-      redirect_to :back
+      redirect_to :back, notice: "You can't crete a chatroom with yourself!"
     else
       @chatroom = Chatroom.private_chatroom_for_users(users)
       @messages = @chatroom.messages.latest

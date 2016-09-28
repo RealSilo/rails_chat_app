@@ -21,6 +21,10 @@ gem 'momentjs-rails', '~> 2.11', '>= 2.11.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
+  gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+  gem 'poltergeist', '~> 1.10'
 end
 
 group :development do
@@ -28,6 +32,15 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'hirb', '~> 0.7.3'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+end
+
+group :test do
+  gem 'capybara', '~> 2.8', '>= 2.8.1'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+  gem 'factory_girl_rails', '~> 4.7'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
