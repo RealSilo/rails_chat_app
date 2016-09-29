@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   resources :private_chatrooms
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users/registrations' }
 end
