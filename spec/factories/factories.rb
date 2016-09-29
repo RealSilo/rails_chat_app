@@ -6,13 +6,15 @@ FactoryGirl.define do
   end
 
   factory :chatroom do
-    name Faker::Lorem.word
+    name Faker::Lorem.characters(10)
     private_chatroom false
+    association :owner, factory: :user
   end
 
   factory :private_chatroom, class: Chatroom do
     #name must be set on creation
     private_chatroom true
+    association :owner, factory: :user
   end
 
   factory :message do

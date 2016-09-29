@@ -4,7 +4,8 @@ class Chatroom < ApplicationRecord
   has_many :messages, dependent: :destroy
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
 
-  validates :name, presence: { messsage: "Name can't be blank" }, length: { in: 4..20, message: "must be between 4 and 20 characters" }, uniqueness: { message: "already exists" }
+  validates :owner, presence: true
+  validates :name, presence: { message: "can't be blank" }, length: { in: 4..64, message: "must be between 4 and 64 characters" }, uniqueness: { message: "already exists" }
 
   scope :public_chatrooms, -> { where(private_chatroom: false) }
   scope :private_chatrooms, -> { where(private_chatroom: true) }
