@@ -17,7 +17,15 @@ FactoryGirl.define do
     association :owner, factory: :user
   end
 
+  factory :chatroom_user do
+    user
+    chatroom
+    checked_at nil
+  end
+
   factory :message do
     body Faker::Lorem.sentence
+    user
+    chatroom
   end
 end

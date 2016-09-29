@@ -2,9 +2,12 @@ class ChatroomUser < ApplicationRecord
   belongs_to :chatroom
   belongs_to :user
 
-  before_create :set_last_read
+  before_create :set_last_checked
 
-  def set_last_read
+  validates :chatroom, presence: true
+  validates :user, presence: true
+
+  def set_last_checked
     self.checked_at = Time.zone.now
   end
 end
